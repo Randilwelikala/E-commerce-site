@@ -6,6 +6,11 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +23,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/root")
 public class root extends HttpServlet {
+    
+    private productDAO productDAO;
+    public root(){
+        this.productDAO = new productDAO();
+    }
     
     protected void doGet(HttpServletRequest req,HttpServletResponse res)
             throws ServletException,IOException{
@@ -35,7 +45,14 @@ public class root extends HttpServlet {
             case "new":
                 System.out.println("new rute");
                 break;
-            default:
+            default:            
+        {
+            try {
+                show_homepage(req,res);
+            } catch (SQLException ex) {
+                Logger.getLogger(root.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
                 
         }
@@ -47,16 +64,19 @@ public class root extends HttpServlet {
         
     }
     private void show_homepage(HttpServletRequest req,HttpServletResponse res)
-            throws ServletException,IOException{
+            throws ServletException,IOException, SQLException{
         try{
+            List<product> allproducts = productDAO.selectallProducts();
+            RequestDispatcher dispatcher =req.getRequestDispatcher("/index.jsp");
+            req.setAttribute("allproduct", allproducts);
+            dispatcher.forward(req,res);
             
+        }catch(IOException | ServletException e){
+            e.printStackTrace();
         }
 }
     
-    private productDAO productDAO;
-    public root(){
-        this.productDAO = new productDAO();
-    }
+    
 }
     
     

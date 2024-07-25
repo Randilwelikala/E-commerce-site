@@ -3,7 +3,7 @@
     Created on : Jul 1, 2024, 11:00:24 PM
     Author     : Acer
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -134,38 +134,39 @@
             <br>
             <h3>Headphones for you!</h3>
             <divb class ="products">
-                <div class ="product">
-                    <h2>product 1</h2>
-                    <h2>100</h2>
-                    
-                </div>
-                <div class ="product">
-                    <h2>product 1</h2>
-                    <h2>100</h2>
-                    
-                </div>
-                <div class ="product">
-                    <h2>product 1</h2>
-                    <h2>100</h2>
-                    
-                </div>
-                <div class ="product">
-                    <h2>product 1</h2>
-                    <h2>100</h2>
-                    
-                </div>
-                <div class ="product">
-                    <h2>product 1</h2>
-                    <h2>100</h2>
-                    
-                </div>
-                <div class ="product">
-                    <h2>product 1</h2>
-                    <h2>100</h2>
-                    
-                </div>
+                
+                <c:forEach var="oneproduct" items="${allproduct}">
+                    <div class ="product">
+                        <h2 id ="name"><c:out value="${oneproduct.name}"/></h2>
+                        <h2 id="price"><c:out value="${oneproduct.price}"/></h2>
+                        <button id="add_button">Add</button>
+                    </div>
+                </c:forEach>                           
+                
             </divb>
-            
+            <button id="showcart">show cart</button>
         </div>
+        <script>
+            var products = document.querySelectorAll('.product');
+            var showcart = document.querySelector('#showcart');
+            var cartlist = [];
+            products.forEach( (product) => {
+                product.addEventListener('click',()=>{
+                    var p_name =product.querySelector('#name').innerText;
+                    var p_price =product.querySelector('#price').innerText;
+                    
+                    var projectobj={
+                        name: p_name,
+                        price: p_price
+                    };
+                    cartlist.push(projectobj);
+                });                    
+                
+            });
+            showcart.addEventListener('click',()=>{
+                console.log(cartlist);
+            
+            })
+        </script>
     </body>
 </html>
