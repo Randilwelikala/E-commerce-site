@@ -8,7 +8,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <title>store</title>
         <style>
             *{
@@ -33,6 +37,20 @@
             .main{
                 padding: 40px 80px
             }
+            .body_navbar{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;  
+                                
+            }
+            input{
+                padding:10px;
+            }
+            .navitem_list{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
         </style>
     </head>
     <body>
@@ -46,9 +64,15 @@
         </div>   
         <div class="main">
             <div class = "body_navbar">
-                <input type= "text" placeholder="search...."/>
+                <div><input type= "text" placeholder="search...."/></div>
+                <div class="navitem_list">
+                    <p><span class="material-symbols-outlined">shopping_cart</span>Card</p>
+                    <p><span class="material-symbols-outlined">inventory</span>Order</p>
+                    <p><span class="material-symbols-outlined">person</span>Account</p>
+                
+                </div>
             </div>
-            <div>element</div>
+            
         </div>
     </body>
 </html>
