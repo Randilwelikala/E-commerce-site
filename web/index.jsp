@@ -145,10 +145,14 @@
                 
             </divb>
             <button id="showcart">show cart</button>
+            <div id="cart">
+                
+            </div>
         </div>
         <script>
             var products = document.querySelectorAll('.product');
             var showcart = document.querySelector('#showcart');
+            var cart = document.querySelector('#cart');
             var cartlist = [];
             products.forEach( (product) => {
                 product.addEventListener('click',()=>{
@@ -165,8 +169,21 @@
             });
             showcart.addEventListener('click',()=>{
                 console.log(cartlist);
+                cart.innerHTML='';
+                cartlist.forEach(item=>{
+                    console.log("loop");
+                    
+                    const itemElement=document.createElement('div');
+                    console.log(item.name);
+                    itemElement.textContent = item.name +"   /   "+ item.price;
+                    cart.appendChild(itemElement);
+                    
+                })
             
-            })
+            });
+            
+            
+            
         </script>
     </body>
 </html>
