@@ -85,8 +85,16 @@
                 padding: 20px;
             }
             .products{
-                display: flex;
-                
+                display: grid;
+                grid-template-columns: 20% 20% 20% 20%;
+                justify-content: space-between;
+            }
+            .product{
+                margin-top : 20px;
+                background: graytext;
+                width: 100%;
+                height: 250px;
+                padding: 20px
             }
         </style>
     </head>
@@ -126,6 +134,21 @@
             <br>
             <h3>Headphones for you!</h3>
             <divb class ="products">
+                <div class ="product">
+                    <h2>product 1</h2>
+                    <h2>100</h2>
+                    
+                </div>
+                <div class ="product">
+                    <h2>product 1</h2>
+                    <h2>100</h2>
+                    
+                </div>
+                <div class ="product">
+                    <h2>product 1</h2>
+                    <h2>100</h2>
+                    
+                </div>
                 <div class ="product">
                     <h2>product 1</h2>
                     <h2>100</h2>
